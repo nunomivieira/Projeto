@@ -1,0 +1,52 @@
+﻿@page
+@model Projeto.Pages.FormularioContext
+@{
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <!-- primeira coluna inputs -->
+            <div class="form-group">
+                <label for="Nome">Nome</label>
+                <input type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex: Nuno" required>
+            </div>
+            <div class="form-group">
+                <label for="Apelido">Apelido</label>
+                <input type="text" class="form-control" id="Apelido" name="Apelido" placeholder="Ex: Vieira" required>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend2">@@</span>
+                    </div>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Ex: exemplo@exemplo.com" aria-describedby="inputGroupPrepend2" required>
+                </div>
+            </div>
+
+            <!-- segunda coluna inputs -->
+            <div class="form-group">
+                <label for="Tamanho">Tamanho</label>
+                <input type="text" class="form-control" id="Tamanho" name="Tamanho" placeholder="Ex: 38" required>
+            </div>
+            <div class="form-group">
+                <label for="Marca">Marca</label>
+                <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Ex: Nike" required>
+            </div>
+            <div class="form-group">
+                <label for="Modelo">Modelo</label>
+                <input type="text" class="form-control" id="Modelo" name="Modelo" placeholder="Ex: Air Jordan 1 Mid" required>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="true" id="Aceito" name="Aceito" required>
+                    <label class="form-check-label" for="Aceito">
+                        Aceito os termos e condições
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" id="enviarFormulario">Enviar Formulário</button>
+        </form>
+    </div>
+</div>

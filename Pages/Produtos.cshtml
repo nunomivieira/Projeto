@@ -1,0 +1,65 @@
+﻿
+@page
+@model Projeto.Pages.ProdutosModel
+@{
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+
+<h3>Hi guys</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-6 col-md-4 offset-md-8 mt-3">
+            <form method="get">
+                <div class="input-group">
+                    <input type="text" id="marca-search" name="marca" class="form-control form-control-sm" value="@Request.Query["marca"]" placeholder="Procurar a Marca" />
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary btn-sm bi" aria-label="Search">
+                            <span class="bi-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<br />
+<br />
+
+   
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var sapatilha in Model.LojaonlineList.Where(s => string.IsNullOrEmpty(Request.Query["marca"]) || s.marca.ToLower().Contains(Request.Query["marca"].ToString().ToLower())))
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="@sapatilha.foto" class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Fotos" preserveAspectRatio="xMidYMid slice" focusable="false" />
+                    <rect width="100%" height="100%" fill="#55595c"></rect>
+                    <div class="card-body">
+                        <h5 class="card-title">@sapatilha.idsapatilhas</h5>
+                        <p class="card-text">Marca: @sapatilha.marca</p>
+                        <p class="card-text">Tamanho: @sapatilha.tamanho</p>
+                        <p class="card-text">Gênero: @sapatilha.genero</p>
+                        <p class="card-text">Preço: @sapatilha.preco</p>
+                        <p class="card-text">Estoque: @sapatilha.stock</p>
+                        <p class="card-text">Descrição: @sapatilha.descricao</p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="retirarItem('@sapatilha.idsapatilhas')">Retirar</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
