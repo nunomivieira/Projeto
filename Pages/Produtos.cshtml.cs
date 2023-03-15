@@ -8,7 +8,7 @@ namespace Projeto.Pages
     public class ProdutosModel : PageModel
     {
 
-    public IEnumerable<Lojaonline> LojaonlineList { get; set; }
+    public IEnumerable<Lojaonline>? LojaonlineList { get; set; }
 
         public void OnGet()
         {

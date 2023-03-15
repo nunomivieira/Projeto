@@ -19,7 +19,7 @@ namespace Projeto.Models
 
         public string? descricao { get; set; }
 
-        public Blob foto { get; set; }
+        public byte[] foto { get; set; }
 
     }
 }

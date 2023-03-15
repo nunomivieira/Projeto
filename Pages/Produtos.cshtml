@@ -40,7 +40,7 @@
         {
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
-                    <img src="@sapatilha.foto" class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Fotos" preserveAspectRatio="xMidYMid slice" focusable="false" />
+                    <img src="data:foto/png;base64,@(System.Convert.ToBase64String((byte[])sapatilha.foto))" class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Fotos" preserveAspectRatio="xMidYMid slice" focusable="false" />
                     <rect width="100%" height="100%" fill="#55595c"></rect>
                     <div class="card-body">
                         <h5 class="card-title">@sapatilha.idsapatilhas</h5>

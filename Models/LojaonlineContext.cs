@@ -39,7 +39,7 @@ namespace Projeto.Models
                             preco = reader.GetDouble("preco"),
                             stock = reader.GetInt32("stock"),
                             descricao = reader.GetString("descricao"),
-                            
+                            foto = (Byte[])reader["foto"]
 
                         });
                         Console.WriteLine(reader.GetInt32("id_sapatilhas"));
