@@ -1,11 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+
 namespace Projeto.Models
 {
     public class LojaonlineContext
     {
-
-
         private string ConnectionString { get; set; }
         public LojaonlineContext()
         {
@@ -17,19 +16,21 @@ namespace Projeto.Models
         }
         public List<Lojaonline> getAllSapatilhas()
         {
-            //Lista para guardar todas a loja existentes na base de dados
-            List<Lojaonline> lista = new List<Lojaonline>(); using (MySqlConnection conn = GetConnection())
+            //Lista para guardar todas a loja existentes na base de dados
+            List<Lojaonline> lista = new List<Lojaonline>();
+            using (MySqlConnection conn = GetConnection())
             {
-                //Abrimos uma coneção com a base de dados
-                conn.Open();                 // Criamos uma query onde vamos pedir todas as sapatilhas
-                MySqlCommand query = new MySqlCommand("SELECT * FROM sapatilhas", conn);              //Percorrer um a um resultado da query (pesquisa).
+                //Abrimos uma coneção com a base de dados
+                conn.Open();
+                // Criamos uma query onde vamos pedir todas as sapatilhas
+                MySqlCommand query = new MySqlCommand("SELECT * FROM sapatilhas", conn);
+                //Percorrer um a um resultado da query (pesquisa).
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         //Mapear os dados que vêm da base de dados com os da classe
-                        //Atenção que os nomes têm que ser iguais aos da tabela na base de dados                    
-
+                        //Atenção que os nomes têm que ser iguais aos da tabela na base de dados
                         lista.Add(new Lojaonline()
                         {
                             idsapatilhas = reader.GetInt32("id_sapatilhas"),
@@ -39,14 +40,26 @@ namespace Projeto.Models
                             preco = reader.GetDouble("preco"),
                             stock = reader.GetInt32("stock"),
                             descricao = reader.GetString("descricao"),
-                            foto = (Byte[])reader["foto"]
-
+                            foto = reader["foto"] == DBNull.Value ? null : (Byte[])reader["foto"]
                         });
                         Console.WriteLine(reader.GetInt32("id_sapatilhas"));
                     }
                 }
                 return lista;
             }
+        }
+
+        public void ComprarSapatilha(int idSapatilha)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                // Criamos uma query para atualizar o estoque da sapatilha com o ID especificado
+                MySqlCommand query = new MySqlCommand("UPDATE sapatilhas SET stock = stock - 1 WHERE id_sapatilhas = @idSapatilha", conn);
+                query.Parameters.AddWithValue("@idSapatilha", idSapatilha);
+                query.ExecuteNonQuery();
+            }
+ 
         }
 
     }
