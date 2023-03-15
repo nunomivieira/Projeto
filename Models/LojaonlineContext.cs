@@ -49,18 +49,5 @@ namespace Projeto.Models
             }
         }
 
-        public void ComprarSapatilha(int idSapatilha)
-        {
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                // Criamos uma query para atualizar o estoque da sapatilha com o ID especificado
-                MySqlCommand query = new MySqlCommand("UPDATE sapatilhas SET stock = stock - 1 WHERE id_sapatilhas = @idSapatilha", conn);
-                query.Parameters.AddWithValue("@idSapatilha", idSapatilha);
-                query.ExecuteNonQuery();
-            }
- 
-        }
-
     }
 }
