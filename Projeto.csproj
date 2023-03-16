@@ -7,18 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\adi2000.png" />
-    <None Include="wwwroot\img\adidas.png" />
-    <None Include="wwwroot\img\adidas1.png" />
-    <None Include="wwwroot\img\gazzele.png" />
-    <None Include="wwwroot\img\jordan.png" />
-    <None Include="wwwroot\img\samba.png" />
-    <None Include="wwwroot\img\stansmi.png" />
-    <None Include="wwwroot\img\tobaco.png" />
-    <None Include="wwwroot\img\trainer.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.32.1" />
     <PackageReference Include="MySqlConnector" Version="2.2.5" />
   </ItemGroup>
